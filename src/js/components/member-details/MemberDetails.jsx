@@ -4,10 +4,17 @@ import ShippingAddress from "../shipping-address/ShippingAddress.jsx";
 import BeamTitle from "../beam-title/BeamTitle.js";
 
 class MemberDetails extends Component {
-  state = {
-    preferences: {},
-    address: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      preferences: {},
+      address: {}
+    };
+
+    this.getValidRecord = this.getValidRecord.bind(this);
+    this.getMemberRecord = this.getMemberRecord.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
+  }
 
   getValidRecord = data => {
     return data
@@ -20,6 +27,18 @@ class MemberDetails extends Component {
 
   getMemberRecord = (data, memberId) => {
     return data.find(member => member.member_id === memberId);
+  };
+
+  changeHandler = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    this.setState({
+      address: {
+        ...this.state.address,
+        [name]: value
+      }
+    });
   };
 
   componentDidMount() {
@@ -64,10 +83,8 @@ class MemberDetails extends Component {
           autoOff={this.state.preferences.auto_off}
         />
         <ShippingAddress
-          address={this.state.address.shipping_address}
-          city={this.state.address.shipping_city}
-          state={this.state.address.shipping_state}
-          zipCode={this.state.address.shipping_zip_code}
+          address={this.state.address}
+          handler={this.changeHandler}
         />
       </>
     );
