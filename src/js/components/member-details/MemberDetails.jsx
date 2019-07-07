@@ -2,6 +2,31 @@ import React, { Component } from "react";
 import BrushPreferences from "../brush-preferences/BrushPreferences.jsx";
 import ShippingAddress from "../shipping-address/ShippingAddress.jsx";
 import BeamTitle from "../beam-title/BeamTitle.js";
+import styled from "styled-components";
+
+const MemberDetailsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 30% 1fr;
+  justify-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+
+  > h1:first-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  @media screen and (max-width: 850px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 1fr 1fr;
+
+    > h1:first-child {
+      grid-column-start: 1;
+      grid-column-end: 1;
+    }
+  }
+`;
 
 class MemberDetails extends Component {
   constructor(props) {
@@ -75,7 +100,7 @@ class MemberDetails extends Component {
 
   render() {
     return (
-      <>
+      <MemberDetailsContainer>
         <BeamTitle>Member Details</BeamTitle>
         <BrushPreferences
           brushColor={this.state.preferences.brush_color}
@@ -86,7 +111,7 @@ class MemberDetails extends Component {
           address={this.state.address}
           handler={this.changeHandler}
         />
-      </>
+      </MemberDetailsContainer>
     );
   }
 }
