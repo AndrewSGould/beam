@@ -67,9 +67,9 @@ class MemberDetails extends Component {
   };
 
   componentDidMount() {
-    const apiCall = "https://member-data.beam.dental/searchResults.json";
+    const api = "https://member-data.beam.dental/";
 
-    fetch(apiCall)
+    fetch(api + "searchResults.json")
       .then(response => {
         return response.json();
       })
@@ -80,7 +80,7 @@ class MemberDetails extends Component {
           address: result
         });
 
-        fetch("https://member-data.beam.dental/memberPreferences.json")
+        fetch(api + "memberPreferences.json")
           .then(response => {
             return response.json();
           })

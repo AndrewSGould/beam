@@ -47,15 +47,9 @@ class ShippingAddress extends Component {
 
   edit = e => {
     e.preventDefault();
-    this.setState(
-      {
-        editing: !this.state.editing
-      },
-      () => {
-        if (this.state.editing) console.log("editing is true");
-        else console.log("editing is false");
-      }
-    );
+    this.setState({
+      editing: !this.state.editing
+    });
   };
 
   render() {
