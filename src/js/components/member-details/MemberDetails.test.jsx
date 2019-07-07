@@ -115,12 +115,81 @@ const searchResults = [
     shipping_zip_code: "43215"
   }
 ];
+const preferenceResults = [
+  {
+    id: 1,
+    member_id: 24,
+    brush_color: "blue",
+    motor_speed: 0.5,
+    auto_off: true
+  },
+  {
+    id: 2,
+    member_id: 39,
+    brush_color: "pink",
+    motor_speed: 0.5,
+    auto_off: false
+  },
+  {
+    id: 3,
+    member_id: 53,
+    brush_color: "chartreuse",
+    motor_speed: 0.5,
+    auto_off: true
+  },
+  {
+    id: 4,
+    member_id: 48,
+    brush_color: "blue",
+    motor_speed: 0.75,
+    auto_off: false
+  },
+  {
+    id: 5,
+    member_id: 62,
+    brush_color: "pink",
+    motor_speed: 0.75,
+    auto_off: true
+  },
+  {
+    id: 6,
+    member_id: 14,
+    brush_color: "chartreuse",
+    motor_speed: 0.75,
+    auto_off: false
+  },
+  {
+    id: 7,
+    member_id: 52,
+    brush_color: "blue",
+    motor_speed: 1.0,
+    auto_off: true
+  },
+  {
+    id: 8,
+    member_id: 43,
+    brush_color: "pink",
+    motor_speed: 1.0,
+    auto_off: false
+  },
+  {
+    id: 9,
+    member_id: 13,
+    brush_color: "chartreuse",
+    motor_speed: 1.0,
+    auto_off: true
+  }
+];
 
 describe("<MemberDetails /> functions", () => {
   describe("getting valid record from member search results", () => {
     let inst;
     beforeEach(() => {
       global.fetch = FetchMock;
+
+      fetch
+        .once(JSON.stringify(searchResults))
+        .once(JSON.stringify(preferenceResults));
 
       const wrapper = renderer.create(<MemberDetails />);
       inst = wrapper.getInstance();

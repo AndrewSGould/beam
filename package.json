@@ -37,12 +37,15 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
-    "build": "npm test && webpack --mode production",
+    "build": "npm run tests && webpack --mode production",
     "tests": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndrewSGould/beam.git"
+  },
+  "jest": {
+    "automock": false
   },
   "author": "Andrew Gould",
   "license": "ISC",
